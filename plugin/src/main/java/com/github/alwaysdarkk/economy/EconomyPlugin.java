@@ -3,6 +3,7 @@ package com.github.alwaysdarkk.economy;
 import com.github.alwaysdarkk.economy.api.EconomyAPI;
 import com.github.alwaysdarkk.economy.api.impl.ImplEconomyAPI;
 import com.github.alwaysdarkk.economy.cache.EconomyUserCache;
+import com.github.alwaysdarkk.economy.ranking.factory.RankingFactory;
 import com.github.alwaysdarkk.economy.repository.EconomyRepository;
 import com.github.alwaysdarkk.economy.repository.provider.RepositoryProvider;
 import com.github.alwaysdarkk.economy.user.factory.EconomyUserFactory;
@@ -14,6 +15,10 @@ import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class EconomyPlugin extends JavaPlugin {
+
+    public static EconomyPlugin getInstance() {
+        return getPlugin(EconomyPlugin.class);
+    }
 
     @Override
     public void onLoad() {
@@ -30,6 +35,9 @@ public class EconomyPlugin extends JavaPlugin {
 
         final EconomyUserCache userCache = new EconomyUserCache();
         final EconomyUserFactory userFactory = new EconomyUserFactory(repository, userCache);
+
+        final RankingFactory rankingFactory =
+                new RankingFactory(repository, getConfig().getConfigurationSection("settings"));
 
         Bukkit.getPluginManager().registerEvents(new UserConnectionListener(userFactory, userCache), this);
 

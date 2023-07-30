@@ -34,5 +34,4 @@ public interface EconomyAPI {
      * @param amount {@link Double} the amount
      */
     void setAmount(@NotNull EconomyUser user, double amount);
-
 }

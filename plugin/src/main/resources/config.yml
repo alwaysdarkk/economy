@@ -7,3 +7,6 @@ database:
     database: 'test'
   sqlite:
     file: 'database/database.db'
+
+settings:
+  update-time: 10 # Tempo para o money top atualizar. (Em minutos)

@@ -5,6 +5,7 @@ import com.github.alwaysdarkk.economy.repository.adapter.EconomyUserAdapter;
 import com.henryfabio.sqlprovider.executor.SQLExecutor;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 @RequiredArgsConstructor
@@ -38,5 +39,10 @@ public class EconomyRepository {
         final String QUERY = "SELECT * FROM economy WHERE name = ?";
         return sqlExecutor.resultOneQuery(
                 QUERY, simpleStatement -> simpleStatement.set(1, name), EconomyUserAdapter.class);
+    }
+
+    public Set<EconomyUser> fetchRanking() {
+        final String QUERY = "SELECT * FROM economy ORDER BY balance LIMIT 10";
+        return sqlExecutor.resultManyQuery(QUERY, simpleStatement -> {}, EconomyUserAdapter.class);
     }
 }
