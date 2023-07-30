@@ -37,6 +37,8 @@ subprojects {
         compileOnly("com.github.azbh111:craftbukkit-1.8.8:R")
         compileOnly("org.jetbrains:annotations:24.0.1")
 
+        implementation("com.github.HenryFabio:sql-provider:9561f20fd2")
+
         val lombok = "org.projectlombok:lombok:1.18.26"
         compileOnly(lombok)
         annotationProcessor(lombok)
