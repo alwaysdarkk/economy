@@ -3,6 +3,7 @@ package com.github.alwaysdarkk.economy.api.impl;
 import com.github.alwaysdarkk.economy.api.EconomyAPI;
 import com.github.alwaysdarkk.economy.api.data.EconomyUser;
 import com.github.alwaysdarkk.economy.cache.EconomyUserCache;
+import com.github.alwaysdarkk.economy.ranking.factory.RankingFactory;
 import com.github.alwaysdarkk.economy.repository.EconomyRepository;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
@@ -14,6 +15,7 @@ public class ImplEconomyAPI implements EconomyAPI {
 
     private final EconomyUserCache userCache;
     private final EconomyRepository repository;
+    private final RankingFactory rankingFactory;
 
     @Override
     public Optional<EconomyUser> getUser(@NotNull String name) {
@@ -36,5 +38,10 @@ public class ImplEconomyAPI implements EconomyAPI {
     public void setAmount(@NotNull EconomyUser user, double amount) {
         user.setAmount(amount);
         repository.updateOne(user);
+    }
+
+    @Override
+    public Optional<EconomyUser> getTycoon() {
+        return rankingFactory.getTycoon();
     }
 }

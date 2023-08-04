@@ -34,4 +34,10 @@ public interface EconomyAPI {
      * @param amount {@link Double} the amount
      */
     void setAmount(@NotNull EconomyUser user, double amount);
+
+    /**
+     * Get the tycoon {@link EconomyUser}
+     * @return The {@link EconomyUser} if present
+     */
+    Optional<EconomyUser> getTycoon();
 }
