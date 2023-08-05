@@ -4,6 +4,7 @@ import com.github.alwaysdarkk.economy.EconomyPlugin;
 import com.github.alwaysdarkk.economy.api.data.EconomyUser;
 import com.github.alwaysdarkk.economy.api.event.RankingUpdateEvent;
 import com.github.alwaysdarkk.economy.repository.EconomyRepository;
+import com.github.alwaysdarkk.economy.util.LuckPermsUtil;
 import com.github.alwaysdarkk.economy.util.NumberFormatter;
 import com.google.common.collect.Sets;
 import lombok.Getter;
@@ -55,7 +56,9 @@ public class RankingFactory {
         cachedRanking.stream().filter(Objects::nonNull).forEach(user -> stringBuilder
                 .append(String.format(
                         " §f%s° %s: §7%s",
-                        position.getAndIncrement(), user.getName(), NumberFormatter.format(user.getBalance())))
+                        position.getAndIncrement(),
+                        LuckPermsUtil.getOfflineTagWithName(user.getName()),
+                        NumberFormatter.format(user.getBalance())))
                 .append("\n"));
 
         stringBuilder.append("\n");

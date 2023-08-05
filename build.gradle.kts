@@ -36,6 +36,8 @@ subprojects {
         compileOnly("com.hpfxd.pandaspigot:pandaspigot-api:1.8.8-R0.1-SNAPSHOT")
         compileOnly("com.github.azbh111:craftbukkit-1.8.8:R")
         compileOnly("org.jetbrains:annotations:24.0.1")
+        compileOnly("com.github.MilkBowl:VaultAPI:1.7")
+        compileOnly("net.luckperms:api:5.4")
 
         implementation("com.github.HenryFabio:sql-provider:9561f20fd2")
 

@@ -3,6 +3,7 @@ package com.github.alwaysdarkk.economy.ranking.listener;
 import com.github.alwaysdarkk.economy.api.data.EconomyUser;
 import com.github.alwaysdarkk.economy.api.event.RankingUpdateEvent;
 import com.github.alwaysdarkk.economy.ranking.factory.RankingFactory;
+import com.github.alwaysdarkk.economy.util.LuckPermsUtil;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
@@ -29,7 +30,7 @@ public class RankingUpdateListener implements Listener {
                     "§a§l MAGNATA!",
                     "§f O money top acaba de atualizar!",
                     "",
-                    "§8 ▸ §fNovo magnata: §7" + tycoon.getName(),
+                    "§8 ▸ §fNovo magnata: §7" + LuckPermsUtil.getOfflineTagWithName(tycoon.getName()),
                     ""
                 }));
     }

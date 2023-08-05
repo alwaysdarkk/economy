@@ -4,3 +4,4 @@ author: alwaysdarkk
 main: com.github.alwaysdarkk.economy.EconomyPlugin
 depend:
   - Vault
+  - LuckPerms
