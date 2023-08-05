@@ -2,3 +2,5 @@ name: economy
 version: 1.0.0
 author: alwaysdarkk
 main: com.github.alwaysdarkk.economy.EconomyPlugin
+depend:
+  - Vault

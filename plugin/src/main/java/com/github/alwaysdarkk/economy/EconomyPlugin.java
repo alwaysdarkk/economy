@@ -11,9 +11,11 @@ import com.github.alwaysdarkk.economy.repository.EconomyRepository;
 import com.github.alwaysdarkk.economy.repository.provider.RepositoryProvider;
 import com.github.alwaysdarkk.economy.user.factory.EconomyUserFactory;
 import com.github.alwaysdarkk.economy.user.listener.UserConnectionListener;
+import com.github.alwaysdarkk.economy.vault.VaultEconomyHook;
 import com.henryfabio.sqlprovider.connector.SQLConnector;
 import com.henryfabio.sqlprovider.executor.SQLExecutor;
 import lombok.SneakyThrows;
+import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandMap;
 import org.bukkit.plugin.ServicePriority;
@@ -42,6 +44,14 @@ public class EconomyPlugin extends JavaPlugin {
 
         final EconomyUserCache userCache = new EconomyUserCache();
         final EconomyUserFactory userFactory = new EconomyUserFactory(repository, userCache);
+
+        Bukkit.getServer()
+                .getServicesManager()
+                .register(
+                        Economy.class,
+                        new VaultEconomyHook(userCache, repository, userFactory),
+                        this,
+                        ServicePriority.Highest);
 
         final RankingFactory rankingFactory =
                 new RankingFactory(repository, getConfig().getConfigurationSection("settings"));
